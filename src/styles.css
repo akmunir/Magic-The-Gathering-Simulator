@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+
+.card {
+    @apply border border-solid border-b-black h-63 w-45 bg-red-100 rounded-xl fixed
+}
+
