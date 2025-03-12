@@ -6,6 +6,7 @@ let startX = 0, startY = 0;
 let newX = 0, newY = 0;
 let initialTop = 0, initialLeft = 0;
 const cards = document.querySelectorAll(".card");
+
 for (const card of cards) {
     card.addEventListener("mousedown", mouseDown);
 }
@@ -24,13 +25,11 @@ function mouseDown(event) {
 }
 
 function mouseMove(event) {
-    if (!isDragging)
+    if (!isDragging) return;
     newX = event.clientX - startX;
     newY = event.clientY - startY;
-    startY = newY;
-    startX = newX;    
-    currentCard.style.top = initialTop + newX + "px";
-    currentCard.style.left = initialLeft + newY + "px";
+    currentCard.style.top = initialTop + newY + "px";
+    currentCard.style.left = initialLeft + newX + "px";
     console.log(newX, newY);
     console.log(startX, startY);
 
@@ -39,6 +38,7 @@ function mouseMove(event) {
 
 function mouseUp(e) {
     isDragging = false;
+    currentCard.style.zIndex = "1";
     currentCard = null;
     document.removeEventListener("mousemove", mouseMove);
     document.removeEventListener("mouseup", mouseUp);
